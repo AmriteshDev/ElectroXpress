@@ -5,6 +5,7 @@ const connectDatabse = require("./databse");
 
 
 // Handling Uncaught Exception 
+// console.log(amritesh)
 process.on("uncaughtException", (err) => {
     console.log(`Error: ${err.message}`);
     console.log(`Shutting down the server due to Uncaught Exception`);
@@ -31,7 +32,7 @@ const server = app.listen(process.env.PORT, () => {
 
 
 
-// Unhandled Promise Rejection
+// Unhandled Promise Rejection  -- worng url/ worng .env url
 process.on("unhandledRejection", (err) => {
     console.log(`Error: ${err.message}`);
     console.log(`Shutting down the server due to Unhandle Promise Rejection`);
