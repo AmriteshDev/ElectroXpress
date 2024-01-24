@@ -13,8 +13,8 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: [true, "Please Enter your Email"],
-        uniqe: true,
+        required: [true, "Please Enter Your Email"],
+        unique: [true, "Email Already Exist"],
         validate: [validator.isEmail, "Please Enter a valid Email"],
     },
     password: {
@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpire: Date,
 });
 
-// Encrypt password
+// // Encrypt password
 userSchema.pre("save", async function (next) {
 
     if (!this.isModified("password")) {
@@ -50,7 +50,7 @@ userSchema.pre("save", async function (next) {
     this.password = await bcrypt.hash(this.password, 10);
 })
 
-// JWT Token 
+// // Creating JWT Token 
 userSchema.methods.getJWTToken = function () {
     return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRE,
