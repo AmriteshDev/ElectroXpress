@@ -41,7 +41,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("Invalid email or password"), 401);
 
     }
-    const isPasswordMatch = user.comparePassword(password);
+    const isPasswordMatch = await user.comparePassword(password);
 
     if (!isPasswordMatch) {
         return next(new ErrorHandler("Invalid email or password"), 401);
@@ -141,6 +141,137 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
     sendToken(user, 200, res);
 
 
+});
+
+// Get User Detail  -- me
+
+exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
+
+    const user = await User.findById(req.user.id);
+
+    res.status(200).json({
+        success: true,
+        user,
+    })
 })
+
+
+// Update User Password
+
+exports.updatePassword = catchAsyncError(async (req, res, next) => {
+
+    const user = await User.findById(req.user.id).select("+password");
+
+    const isPasswordMatch = await user.comparePassword(req.body.oldPassword);
+
+    if (!isPasswordMatch) {
+        return next(new ErrorHandler("Old password is incurrect", 400));
+    }
+
+    if (req.body.newPassword !== req.body.confirmPassword) {
+        return next(new ErrorHandler("Password does not match", 404));
+    }
+
+    user.password = req.body.newPassword
+
+    await user.save();
+    sendToken(user, 200, res);
+})
+
+// // Update User Profile
+
+exports.updateProfile = catchAsyncError(async (req, res, next) => {
+
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email
+    };
+
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+    res.status(200).json({
+        success: true,
+        user,
+    });
+
+})
+
+// Get All Users - Admin
+
+exports.getAllUsers = catchAsyncError(async (req, res, next) => {
+    const users = await User.find();
+
+    res.status(200).json({
+        success: true,
+        users,
+    });
+});
+
+// Get Single Users - Admin
+
+exports.getSingleUser = catchAsyncError(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        return next(new ErrorHandler(`User does not exist with ID : ${req.params.id}`)); s
+    }
+
+    res.status(200).json({
+        success: true,
+        user,
+    });
+});
+
+
+// // Update User Role -- admin
+
+exports.updateUserRole = catchAsyncError(async (req, res, next) => {
+
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role,
+    };
+
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+    res.status(200).json({
+        success: true,
+        user,
+    });
+
+})
+
+
+// // Delete User -- Admin
+
+exports.deleteUser = catchAsyncError(async (req, res, next) => {
+
+
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        return next(new ErrorHandler(`User does not exist with ID: ${req.params.id}`));
+
+    }
+
+    await user.deleteOne();
+
+    res.status(200).json({
+        success: true,
+        message: "User Deleted Successfully",
+    });
+
+})
+
+
 
 
