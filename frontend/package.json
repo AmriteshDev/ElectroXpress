@@ -15,6 +15,7 @@
     "react-scripts": "^5.0.1",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
+    "webfontloader": "^1.6.28",
     "webpack": "^5.61.0"
   },
   "scripts": {
