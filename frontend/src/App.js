@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import Header from "./component/Header/Header.js"
+import Header from "./component/layout/Header/Header.js"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import webfont from "webfontloader";
-import Footer from "./component/Footer/Footer.js";
-import Home from "./component/layout/Home/Home.js";
+import Footer from "./component/layout/Footer/Footer.js";
+import Home from "./component/Home/Home.js";
 
 
 function App() {
