@@ -12,10 +12,12 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
     "react-rating-stars-component": "^2.2.0",
+    "react-redux": "^7.2.4",
     "react-router-dom": "^6.21.3",
     "react-scripts": "^5.0.1",
-    "redux": "^5.0.1",
-    "redux-thunk": "^3.1.0",
+    "redux": "^4.1.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
     "webfontloader": "^1.6.28",
     "webpack": "^5.61.0"
   },
@@ -43,5 +45,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.29.21:4000"
+  "proxy": "http://192.168.130.121:4000"
 }

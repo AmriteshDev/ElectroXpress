@@ -1,7 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { CgMouse } from "react-icons/cg";
 import "./Home.css";
 import ProductCard from './Product/ProductCard.js';
+import MetaData from '../layout/MetaData.js';
+import { useDispatch } from "react-redux";
+import { getProduct } from '../../actions/productAction.js';
+
 
 const product = {
     name: "Blue Tshirt",
@@ -11,8 +15,20 @@ const product = {
 }
 
 const Home = () => {
+
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        dispatch(getProduct());
+    }, [dispatch]);
+
     return (
         <Fragment>
+
+
+            <MetaData title='ElectroXpress' />
+
             <div className='banner'>
                 <p>Welcome to ElectroXpress</p>
                 <h1>FIND AMAZING PRODUCTS BELOW</h1>
