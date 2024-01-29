@@ -5,17 +5,17 @@ import {
     CLEAR_ERROR
 } from "../constants/productConstant";
 
-export const productReducer = (state = { prodcuts: [] }, action) => {
+export const productReducer = (state = { products: [] }, action) => {
     switch (action.type) {
         case ALL_PRODUCT_REQUEST:
             return {
                 loading: true,
-                prodcuts: []
+                products: []
             };
         case ALL_PRODUCT_SUCCESS:
             return {
                 loading: false,
-                prodcuts: action.payload.prodcuts,
+                products: action.payload.products,
                 productsCount: action.payload.productCount,
             };
         case ALL_PRODUCT_FAIL:
