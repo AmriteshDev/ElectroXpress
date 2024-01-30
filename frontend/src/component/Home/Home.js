@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { CgMouse } from "react-icons/cg";
 import "./Home.css";
-import ProductCard from './Product/ProductCard.js';
+import ProductCard from '../Product/ProductCard.js';
 import MetaData from '../layout/MetaData.js';
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from '../../actions/productAction.js';
@@ -26,7 +26,7 @@ const Home = () => {
         }
 
         dispatch(getProduct());
-    }, [dispatch, error]);
+    }, [dispatch, error, alert]);
 
     return (
         <Fragment>
