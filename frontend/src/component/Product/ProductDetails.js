@@ -1,18 +1,21 @@
 import React, { Fragment, useEffect } from 'react';
-import "./productDetails.css";
+import "./ProductDetails.css";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductDetails } from '../../actions/productAction';
+import { useParams } from 'react-router-dom';
 
-function productDetails({ match }) {
+function ProductDetails() {
 
     const dispatch = useDispatch();
-    const { product } = useSelector((state) => state.product);
+    const { id } = useParams();
+    const { product, loading, error } = useSelector((state) => state.productDetails);
 
 
     useEffect(() => {
-        dispatch(getProductDetails(match.params.id))
-    }, [dispatch])
+        dispatch(getProductDetails(id));
+        console.log(product.images);
+    }, [dispatch, id]);
 
     return (
         <Fragment>
@@ -21,7 +24,7 @@ function productDetails({ match }) {
                     <Carousel>
                         {
                             product.images && product.images.map((item, i) => (
-                                <img key={item.url} src={item.url} alt={`${i} Slide`}
+                                <img className='productDetails' key={item.url} src={item.url} alt={`${i} Slide`}
                                 />
                             ))
                         }
@@ -32,4 +35,4 @@ function productDetails({ match }) {
     )
 }
 
-export default productDetails
+export default ProductDetails; 
