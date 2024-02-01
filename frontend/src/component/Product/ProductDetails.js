@@ -4,11 +4,11 @@ import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductDetails } from '../../actions/productAction';
 
-function productDetails({ match }) {
+function ProductDetails({ match }) {
 
     const dispatch = useDispatch();
-    const { product } = useSelector((state) => state.product);
-
+    const data = useSelector((state) => state.ProductDetails);
+    console.log(data)
 
     useEffect(() => {
         dispatch(getProductDetails(match.params.id))
@@ -20,10 +20,10 @@ function productDetails({ match }) {
                 <div>
                     <Carousel>
                         {
-                            product.images && product.images.map((item, i) => (
-                                <img key={item.url} src={item.url} alt={`${i} Slide`}
-                                />
-                            ))
+                            // product.images && product.images.map((item, i) => (
+                            //     <img key={item.url} src={item.url} alt={`${i} Slide`}
+                            //     />
+                            // ))
                         }
                     </Carousel>
                 </div>
@@ -32,4 +32,4 @@ function productDetails({ match }) {
     )
 }
 
-export default productDetails
+export default ProductDetails
