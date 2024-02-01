@@ -3,27 +3,28 @@ import "./productDetails.css";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductDetails } from '../../actions/productAction';
+import { useParams } from 'react-router-dom';
 
-function ProductDetails({ match }) {
 
+function ProductDetails() {
+    const { id } = useParams();
     const dispatch = useDispatch();
-    const data = useSelector((state) => state.ProductDetails);
-    console.log(data)
+    const { product, loading, error } = useSelector((state) => state.productDetails);
 
     useEffect(() => {
-        dispatch(getProductDetails(match.params.id))
-    }, [dispatch])
+        dispatch(getProductDetails(id))
+    }, [dispatch, id])
 
     return (
         <Fragment>
-            <div className='productDetails'>
+            <div className='ProductDetails'>
                 <div>
                     <Carousel>
                         {
-                            // product.images && product.images.map((item, i) => (
-                            //     <img key={item.url} src={item.url} alt={`${i} Slide`}
-                            //     />
-                            // ))
+                            product.images && product.images.map((item, i) => (
+                                <img key={item.url} src={item.url} alt={`${i} Slide`}
+                                />
+                            ))
                         }
                     </Carousel>
                 </div>
