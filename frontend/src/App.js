@@ -4,7 +4,9 @@ import Header from "./component/layout/Header/Header.js"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import webfont from "webfontloader";
 import Footer from "./component/layout/Footer/Footer.js";
-import Home from "./component/layout/Home/Home.js";
+import Home from "./component/Home/Home.js";
+import ProductDetails from "./component/Product/ProductDetails.js";
+
 
 
 function App() {
@@ -21,7 +23,8 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route extact path="/" Component={Home} />
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
 
       <Footer />
