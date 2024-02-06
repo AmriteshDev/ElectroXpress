@@ -61,7 +61,7 @@ function ProductDetails() {
                                     <div className='detailsBlock-3-1'>
                                         <div className='detailsBlock-3-1-1'>
                                             <button>-</button>
-                                            <input type="number" value="1" />
+                                            <input type="number" defaultValue="1" />
                                             <button>+</button>
                                         </div>
                                         <button>Add to Cart</button>
@@ -89,7 +89,7 @@ function ProductDetails() {
                             product.reviews && product.reviews[0] ?
                                 (<div className='reviews'>
                                     {
-                                        product.reviews && product.reviews.map((review) => <ReviewCard review={review} />)
+                                        product.reviews && product.reviews.map((review) => <ReviewCard review={review} key={review.user} />)
                                     }
                                 </div>) : (<p className='noReviews'>No Reviews Yet</p>)
                         }
