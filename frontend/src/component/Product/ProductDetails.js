@@ -8,6 +8,7 @@ import ReactStars from "react-rating-stars-component";
 import ReviewCard from './ReviewCard';
 import Loader from '../layout/Loader/Loader';
 import { useAlert } from "react-alert";
+import MetaData from '../layout/MetaData';
 
 function ProductDetails() {
     const { id } = useParams();
@@ -37,6 +38,8 @@ function ProductDetails() {
             {
                 loading ? (<Loader />) : (
                     <Fragment>
+                        <MetaData title={`${product.name} -- ElectroXpress`} />
+
                         <div className="ProductDetails">
                             <div>
                                 <Carousel>
