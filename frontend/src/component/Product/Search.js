@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react';
 import "./Search.css";
 import { useNavigate } from 'react-router-dom';
 

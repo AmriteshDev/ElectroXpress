@@ -4,7 +4,7 @@ import { clearErrors, getProduct } from '../../actions/productAction';
 import Loader from '../layout/Loader/Loader';
 import ProductCard from './ProductCard';
 import { useParams } from 'react-router-dom';
-import Pagination from "react-js-pagination";
+// import Pagination from "react-js-pagination";
 import "./Products.css";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
@@ -62,7 +62,7 @@ const Products = () => {
                             />
                         </div>
 
-                        {resultPerPage < productsCount && (
+                        {/* {resultPerPage < productsCount && (
                             <div className="paginationBox">
                                 <Pagination
                                     activePage={currentPage}
@@ -79,7 +79,7 @@ const Products = () => {
                                     activeLinkClass="pageLinkActive"
                                 />
                             </div>
-                        )}
+                        )} */}
 
                     </Fragment>
 
