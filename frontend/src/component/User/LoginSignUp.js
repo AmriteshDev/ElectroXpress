@@ -153,7 +153,7 @@ const LoginSignUp = () => {
                                 onChange={registerDataChange}
                             />
                         </div>
-                        <div className='registerImage'>
+                        <div id='registerImage'>
                             <img src={avatarPreview} alt='Avatar Preview' />
                             <input
                                 type='file'
