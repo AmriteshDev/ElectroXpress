@@ -1,5 +1,6 @@
 import React, { Fragment, useRef, useState } from 'react';
 import "./loginSignUp.css";
+import profile from "../../images/Profile.png";
 import Loader from '../layout/Loader/Loader';
 import { Link } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
@@ -16,7 +17,7 @@ const LoginSignUp = () => {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [avatar, setAvatar] = useState();
-    const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+    const [avatarPreview, setAvatarPreview] = useState(profile);
 
 
     const [user, setUser] = useState({
@@ -63,20 +64,20 @@ const LoginSignUp = () => {
 
     const switchTabs = (e, tab) => {
         if (tab === "login") {
-            switcherTabs.current.classlist.add("shiftToNeutral")
-            switcherTabs.current.classlist.remove("shiftToRight")
+            switcherTabs.current.classList.add("shiftToNeutral")
+            switcherTabs.current.classList.remove("shiftToRight")
 
 
-            registerTab.current.classlist.remove("shiftToNeutralForm")
-            loginTab.current.classlist.remove("shiftToLeft")
+            registerTab.current.classList.remove("shiftToNeutralForm")
+            loginTab.current.classList.remove("shiftToLeft")
         }
         if (tab === "register") {
-            switcherTabs.current.classlist.remove("shiftToNeutral")
-            switcherTabs.current.classlist.add("shiftToRight")
+            switcherTabs.current.classList.remove("shiftToNeutral")
+            switcherTabs.current.classList.add("shiftToRight")
 
 
-            registerTab.current.classlist.add("shiftToNeutralForm")
-            loginTab.current.classlist.add("shiftToLeft")
+            registerTab.current.classList.add("shiftToNeutralForm")
+            loginTab.current.classList.add("shiftToLeft")
         }
     }
 
