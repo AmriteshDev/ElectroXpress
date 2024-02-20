@@ -41,7 +41,7 @@
     height: 100vmin;
     background-color: #ffffff;
     position: absolute;
-    top: 0%;
+    /* top: 0%; */
     left: 0%;
     max-width: 100%;
     clip-path: polygon(100% 72%, 0% 100%, 100% 100%);
