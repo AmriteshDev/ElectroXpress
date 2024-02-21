@@ -3,6 +3,7 @@ import MetaData from '../layout/MetaData';
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Loader from '../layout/Loader/Loader';
+import "./Profile.css";
 
 
 
