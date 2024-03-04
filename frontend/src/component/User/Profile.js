@@ -9,7 +9,6 @@ import "./Profile.css";
 
 const Profile = () => {
     const navigate = useNavigate();
-    // const { user, loading, isAuthenticated } = useSelector(state => state.user);
     const { loading, isAuthenticated, user } = useSelector(state => state.user)
 
 

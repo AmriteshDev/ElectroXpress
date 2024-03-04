@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Header from "./component/layout/Header/Header.js"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Navigate, Route } from "react-router-dom";
 import webfont from "webfontloader";
 import Footer from "./component/layout/Footer/Footer.js";
 import Home from "./component/Home/Home.js";
@@ -14,7 +14,11 @@ import { loadUser } from "./actions/userAction.js";
 import { useSelector } from "react-redux";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import Profile from "./component/User/Profile.js";
-import ProtectedRoute from "./component/Route/ProtectedRoute.js";
+// import ProtectedRoute from "./component/Route/ProtectedRoute.js";
+import UpdateProfile from "./component/User/UpdateProfile.js";
+
+
+
 
 
 function App() {
@@ -44,7 +48,15 @@ function App() {
         <Route path="/products/:keyword" element={<Products />} />
         <Route path="/search" element={<Search />} />
         <Route path="/login" element={<LoginSignUp />} />
-        <ProtectedRoute path="/account" element={Profile} />
+
+        {/* <ProtectedRoute path="/account" element={<Profile />} /> */}
+        <Route path="/account"
+          element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
+        />
+
+        <Route path="/me/update"
+          element={isAuthenticated ? <UpdateProfile /> : <Navigate to="/login" />}
+        />
       </Routes>
 
       <Footer />
