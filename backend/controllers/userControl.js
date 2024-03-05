@@ -100,7 +100,7 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 
         await sendEmail({
             email: user.email,
-            subject: `Ecommerce Password Recovery`,
+            subject: `ElectroXpress Password Recovery`,
             message,
         });
 
