@@ -49,7 +49,7 @@ const Home = () => {
 
                         </div>
 
-                        <h2 className='homeHeading'>Featured Prducts</h2>
+                        <h2 className='homeHeading'>Featured Products</h2>
 
                         <div className='container' id="container">
 
