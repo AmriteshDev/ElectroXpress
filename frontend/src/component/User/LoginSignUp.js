@@ -81,7 +81,7 @@ const LoginSignUp = ({ history }) => {
         if (isAuthenticated) {
             navigate("/account")
         }
-    }, [dispatch, error, alert, history, isAuthenticated])
+    }, [dispatch, error, alert, navigate, history, isAuthenticated])
 
 
     const switchTabs = (e, tab) => {
@@ -141,7 +141,7 @@ const LoginSignUp = ({ history }) => {
                                             onChange={(e) => setLoginPassword(e.target.value)}
                                         />
                                     </div>
-                                    <Link to="/password/forget" >Forget Password ?</Link>
+                                    <Link to="/password/forgot" >Forget Password ?</Link>
                                     <input type='submit' value="Login" className='loginBtn' />
                                 </form>
                                 <form className='signUpForm' ref={registerTab} encType="multipart/form-data" onSubmit={registerSubmit}>
