@@ -18,6 +18,7 @@ import Profile from "./component/User/Profile.js";
 import UpdateProfile from "./component/User/UpdateProfile.js";
 import UpdatePassword from "./component/User/UpdatePassword.js";
 import ForgotPassword from "./component/User/ForgotPassword.js";
+import PasswordReset from "./component/User/PasswordReset.js";
 
 
 
@@ -51,6 +52,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/login" element={<LoginSignUp />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
+        <Route path="/password/reset/:token" element={<PasswordReset />} />
 
         {/* <ProtectedRoute path="/account" element={<Profile />} /> */}
         <Route path="/account"
