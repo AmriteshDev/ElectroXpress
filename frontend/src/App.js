@@ -16,6 +16,8 @@ import UserOptions from "./component/layout/Header/UserOptions.js";
 import Profile from "./component/User/Profile.js";
 // import ProtectedRoute from "./component/Route/ProtectedRoute.js";
 import UpdateProfile from "./component/User/UpdateProfile.js";
+import UpdatePassword from "./component/User/UpdatePassword.js";
+import ForgotPassword from "./component/User/ForgotPassword.js";
 
 
 
@@ -48,6 +50,7 @@ function App() {
         <Route path="/products/:keyword" element={<Products />} />
         <Route path="/search" element={<Search />} />
         <Route path="/login" element={<LoginSignUp />} />
+        <Route path="/password/forgot" element={<ForgotPassword />} />
 
         {/* <ProtectedRoute path="/account" element={<Profile />} /> */}
         <Route path="/account"
@@ -56,6 +59,10 @@ function App() {
 
         <Route path="/me/update"
           element={isAuthenticated ? <UpdateProfile /> : <Navigate to="/login" />}
+        />
+
+        <Route path="/password/update"
+          element={isAuthenticated ? <UpdatePassword /> : <Navigate to="/login" />}
         />
       </Routes>
 
